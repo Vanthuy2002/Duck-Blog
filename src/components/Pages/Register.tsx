@@ -1,6 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Checkbox, Input, Label, MessageError, Title } from '../module';
+import {
+  Button,
+  Checkbox,
+  Input,
+  Label,
+  MessageError,
+  Title,
+  PasswordField,
+} from '../module';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -72,12 +80,7 @@ const Register: React.FC = () => {
 
               <div>
                 <Label name='password'>Your Password</Label>
-                <Input
-                  control={control}
-                  name='password'
-                  placeholder='Enter your password...'
-                  type='password'
-                />
+                <PasswordField control={control} name='password' />
                 {errors && errors.password && (
                   <MessageError>{errors?.password?.message}</MessageError>
                 )}

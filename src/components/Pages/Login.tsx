@@ -1,11 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Input, Label, Title, MessageError } from '../module';
+import {
+  Button,
+  Input,
+  Label,
+  Title,
+  MessageError,
+  PasswordField,
+} from '../module';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { FormValue } from '../module/Input/Input';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { FormValue, messErr } from '../../utils/contants';
 
 const Login: React.FC = () => {
-  const { handleSubmit, control, formState } = useForm<FormValue>();
+  const schema = yup.object({
+    email: yup.string().required(messErr.require).email(messErr.email),
+    password: yup.string().required(messErr.require).min(8, messErr.password),
+  });
+  const { handleSubmit, control, formState } = useForm<FormValue>({
+    resolver: yupResolver(schema),
+  });
+
+  const { errors } = formState;
 
   const handleLogin: SubmitHandler<FormValue> = (values) => {
     console.log(values);
@@ -39,25 +56,24 @@ const Login: React.FC = () => {
                   placeholder='example@gmail.com'
                   type='email'
                 />
-                <MessageError>This field is required</MessageError>
+                {errors && errors?.email && (
+                  <MessageError>{errors?.email?.message}</MessageError>
+                )}
               </div>
 
               <div>
                 <Label name='password'>Your Password</Label>
-                <Input
-                  control={control}
-                  name='password'
-                  placeholder='Enter your password...'
-                  type='password'
-                />
-                <MessageError>This field is required</MessageError>
+                <PasswordField control={control} name='password' />
+                {errors && errors?.password && (
+                  <MessageError>{errors?.password?.message}</MessageError>
+                )}
               </div>
               {/* Button*/}
               <Button type='submit'>Login</Button>
 
               {/* already for accounts */}
               <p className='text-sm font-light text-gray-500'>
-                First time, wanna create an account?
+                First time, wanna create an account?{' '}
                 <Link
                   to='/register'
                   className='font-medium text-primary-600 hover:underline'
