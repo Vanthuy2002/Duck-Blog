@@ -1,11 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Checkbox, Input, Label, Title } from '../module';
+import { Button, Checkbox, Input, Label, MessageError, Title } from '../module';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { FormValue, messErr } from '../../utils/contants';
+
+const regexUsername = /^[a-zA-Z0-9]{4,10}$/;
 
 const Register: React.FC = () => {
+  const schema = yup.object({
+    username: yup
+      .string()
+      .required(messErr.require)
+      .matches(regexUsername, { message: messErr.username }),
+    email: yup.string().required(messErr.require).email(messErr.email),
+    password: yup.string().required(messErr.require).min(8, messErr.password),
+  });
+
+  const { handleSubmit, control, formState } = useForm<FormValue>({
+    resolver: yupResolver<FormValue>(schema),
+  });
+
+  const { errors } = formState;
+
+  const handleRegister: SubmitHandler<FormValue> = (values) => {
+    console.log(values);
+  };
+
   return (
-    <section className='bg-blue-50 min-h-screen'>
-      <div className='flex flex-col max-w-2xl items-center justify-center px-6 mx-auto'>
+    <section className='min-h-screen bg-blue-50'>
+      <div className='flex flex-col items-center justify-center max-w-2xl px-6 mx-auto'>
         {/* Logo */}
         <Link to='/'>
           <span className='flex flex-col items-center mb-6 text-2xl font-semibold text-gray-900'>
@@ -18,32 +43,48 @@ const Register: React.FC = () => {
         <div className='w-full bg-white rounded-lg shadow'>
           <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
             <Title>Create an accounts</Title>
-            <form className='space-y-4 md:space-y-6' autoComplete='off'>
+            <form
+              className='space-y-4 md:space-y-6'
+              autoComplete='off'
+              onSubmit={handleSubmit(handleRegister)}
+            >
               <div>
                 <Label name='username'>Username</Label>
                 <Input
+                  control={control}
                   name='username'
                   placeholder='Enter your username ...'
                   type='text'
                 />
+                {errors && errors?.username && (
+                  <MessageError>{errors?.username?.message}</MessageError>
+                )}
               </div>
 
               <div>
                 <Label name='email'>Your email</Label>
                 <Input
+                  control={control}
                   name='email'
                   placeholder='example@gmail.com'
-                  type='email'
+                  type='text'
                 />
+                {errors && errors?.email && (
+                  <MessageError>{errors?.email?.message}</MessageError>
+                )}
               </div>
 
               <div>
                 <Label name='password'>Your Password</Label>
                 <Input
+                  control={control}
                   name='password'
                   placeholder='Enter your password...'
                   type='password'
                 />
+                {errors && errors.password && (
+                  <MessageError>{errors?.password?.message}</MessageError>
+                )}
               </div>
 
               {/* checkbox */}

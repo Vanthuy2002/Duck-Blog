@@ -1,25 +1,23 @@
-import React from 'react';
-
-type InputProps = {
+import { useController, UseControllerProps } from 'react-hook-form';
+import { FormValue } from '../../../utils/contants';
+interface InputProps extends UseControllerProps {
   type: string;
-  name: string;
   placeholder: string;
   className?: string;
-};
+  isDisabled?: boolean;
+}
 
-const Input: React.FC<InputProps> = ({
-  type = 'text',
-  name,
-  placeholder,
-  className = '',
-}) => {
+const Input = (props: InputProps<FormValue>) => {
+  const { field } = useController(props);
+
   return (
     <input
-      type={type}
-      name={name}
-      id={name}
-      className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ${className}`}
-      placeholder={placeholder}
+      type={props.type}
+      id={props.name}
+      className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ${props.className}`}
+      placeholder={props.placeholder}
+      disabled={props.isDisabled}
+      {...field}
     />
   );
 };
