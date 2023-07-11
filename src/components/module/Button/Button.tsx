@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       type={type}
-      className={`w-full text-white ${className} hover:${className} font-medium rounded-lg text-sm px-5 py-2.5 text-center`}
+      className={`w-full text-white ${className} hover:${className} font-medium rounded-lg text-md px-5 py-2.5 text-center`}
     >
       {isLoading ? 'Loading...' : children}
     </button>
