@@ -6,16 +6,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormValue, messErr } from '../../utils/contants';
 
-const regexUsername = /^[a-zA-Z0-9]{4,10}$/;
-
 const Register: React.FC = () => {
   const schema = yup.object({
-    username: yup
-      .string()
-      .required(messErr.require)
-      .matches(regexUsername, { message: messErr.username }),
+    username: yup.string().required(messErr.require),
     email: yup.string().required(messErr.require).email(messErr.email),
     password: yup.string().required(messErr.require).min(8, messErr.password),
+    terms: yup.boolean().oneOf([true], messErr.accept),
   });
 
   const { handleSubmit, control, formState } = useForm<FormValue>({
@@ -89,8 +85,13 @@ const Register: React.FC = () => {
 
               {/* checkbox */}
               <div className='flex items-start gap-x-3'>
-                <Checkbox name='terms' />
-                <Label name='terms' className='select-none'>
+                <Checkbox control={control} name='terms' />
+                <Label
+                  name='terms'
+                  className={
+                    errors?.terms ? 'text-red-500 select-none' : 'select-none'
+                  }
+                >
                   By register, I accept the Terms and Conditions
                 </Label>
               </div>

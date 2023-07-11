@@ -2,10 +2,12 @@ export type FormValue = {
   email: string;
   password: string;
   username?: string;
+  terms?: boolean;
 };
 
 type MessLogProps = {
   require: string;
+  accept: string;
 } & FormValue;
 
 const messErr: MessLogProps = {
@@ -13,6 +15,7 @@ const messErr: MessLogProps = {
   password: 'This field must be less than 8 character',
   username: 'This field can not contains special character',
   require: 'This field is required',
+  accept: ' Please accept our policy to use products',
 };
 
 export { messErr };

@@ -1,17 +1,14 @@
-import React from 'react';
+import { useController, UseControllerProps } from 'react-hook-form';
+import { FormValue } from '../../../utils/contants';
 
-type CheckboxProps = {
-  name: string;
-  className?: string;
-};
-
-const Checkbox: React.FC<CheckboxProps> = ({ name, className = '' }) => {
+const Checkbox = (props: UseControllerProps<FormValue, any>) => {
+  const { field } = useController(props);
   return (
     <input
-      id={name}
-      aria-describedby={name}
+      id={props.name}
+      {...field}
       type='checkbox'
-      className={`w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 ${className}`}
+      className={`w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300`}
     />
   );
 };
