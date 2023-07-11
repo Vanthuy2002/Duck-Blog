@@ -18,4 +18,8 @@ const messErr: MessLogProps = {
   accept: ' Please accept our policy to use products',
 };
 
+type MenuProps = { title: string; to: string };
+
+export type MenuDataProps = Array<MenuProps>;
+
 export { messErr };
