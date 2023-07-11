@@ -6,12 +6,15 @@ const Register: React.FC = () => {
   return (
     <section className='bg-blue-50 min-h-screen'>
       <div className='flex flex-col max-w-2xl items-center justify-center px-6 mx-auto'>
+        {/* Logo */}
         <Link to='/'>
           <span className='flex flex-col items-center mb-6 text-2xl font-semibold text-gray-900'>
             <img className='w-[100px] h-[100px]' src='/duck.png' alt='logo' />
             <span>Duck Blogger</span>
           </span>
         </Link>
+
+        {/* form */}
         <div className='w-full bg-white rounded-lg shadow'>
           <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
             <Title>Create an accounts</Title>
