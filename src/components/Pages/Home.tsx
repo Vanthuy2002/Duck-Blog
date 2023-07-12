@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from '../Layout/Navbar';
+import { Layout } from '../Layout/';
 
 const HomePage: React.FC = () => {
-  return <Navbar />;
+  return <Layout></Layout>;
 };
 
 export default HomePage;
