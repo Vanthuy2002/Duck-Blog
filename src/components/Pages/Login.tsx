@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Button,
   Input,
@@ -7,13 +8,20 @@ import {
   Title,
   MessageError,
   PasswordField,
+  toast,
 } from '../module';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormValue, messErr } from '../../utils/contants';
+import { AuthContext } from '../context/AuthContext';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase/config';
 
 const Login: React.FC = () => {
+  const { accounts } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const schema = yup.object({
     email: yup.string().required(messErr.require).email(messErr.email),
     password: yup.string().required(messErr.require).min(8, messErr.password),
@@ -24,9 +32,25 @@ const Login: React.FC = () => {
 
   const { errors } = formState;
 
-  const handleLogin: SubmitHandler<FormValue> = (values) => {
-    console.log(values);
+  const handleLogin: SubmitHandler<FormValue> = async (values) => {
+    try {
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+      toast.success('Login successfully!!');
+      navigate('/');
+    } catch (error) {
+      toast.error('Invalid email or password, try again');
+    }
   };
+
+  useEffect(() => {
+    document.title = 'Login with your account';
+  }, []);
+
+  useEffect(() => {
+    if (accounts?.email) {
+      navigate('/');
+    }
+  }, [accounts?.email, navigate]);
 
   return (
     <section className='min-h-screen bg-blue-50'>

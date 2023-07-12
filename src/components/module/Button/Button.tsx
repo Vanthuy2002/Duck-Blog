@@ -5,18 +5,24 @@ type ButtonProps = {
   type: 'button' | 'submit';
   isLoading?: boolean;
   className?: string;
+  disabled?: boolean;
+  onClick?: () => void;
 };
 
 const Button: React.FC<ButtonProps> = ({
   children,
   type = 'button',
-  isLoading,
+  isLoading = false,
   className = 'bg-primary-600',
+  disabled = false,
+  onClick,
 }) => {
   return (
     <button
       type={type}
-      className={`w-full text-white ${className} hover:${className} font-medium rounded-lg text-md px-5 py-2.5 text-center`}
+      className={`w-full text-white ${className} font-medium rounded-md text-md px-5 py-2.5 text-center disabled:opacity-50`}
+      disabled={disabled}
+      onClick={onClick}
     >
       {isLoading ? 'Loading...' : children}
     </button>

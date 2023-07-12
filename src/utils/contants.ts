@@ -10,6 +10,22 @@ type MessLogProps = {
   accept: string;
 } & FormValue;
 
+type RoleProps = {
+  USER: string;
+  ADMIN: string;
+  BLOGGER: string;
+};
+
+type UserStatusProps = {
+  ACTIVE: string;
+  PENDING: string;
+  BANNER: string;
+};
+
+type MenuProps = { title: string; to: string };
+
+export type MenuDataProps = Array<MenuProps>;
+
 const messErr: MessLogProps = {
   email: 'This field must be email',
   password: 'This field must be less than 8 character',
@@ -18,8 +34,16 @@ const messErr: MessLogProps = {
   accept: ' Please accept our policy to use products',
 };
 
-type MenuProps = { title: string; to: string };
+const roleUser: RoleProps = {
+  ADMIN: 'Admin',
+  BLOGGER: 'Blogger',
+  USER: 'User',
+};
 
-export type MenuDataProps = Array<MenuProps>;
+const userStatus: UserStatusProps = {
+  ACTIVE: 'Active',
+  PENDING: 'Pending',
+  BANNER: 'Banner',
+};
 
-export { messErr };
+export { messErr, roleUser, userStatus };

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Button,
   Checkbox,
@@ -8,13 +8,18 @@ import {
   MessageError,
   Title,
   PasswordField,
+  toast,
 } from '../module';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { FormValue, messErr } from '../../utils/contants';
+import { FormValue, messErr, roleUser, userStatus } from '../../utils/contants';
+import { auth, db } from '../../firebase/config';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 const Register: React.FC = () => {
+  const navigate = useNavigate();
   const schema = yup.object({
     username: yup.string().required(messErr.require),
     email: yup.string().required(messErr.require).email(messErr.email),
@@ -25,12 +30,38 @@ const Register: React.FC = () => {
   const { handleSubmit, control, formState } = useForm<FormValue>({
     resolver: yupResolver<FormValue>(schema),
   });
+  const { errors, isSubmitting } = formState;
 
-  const { errors } = formState;
+  const handleRegister: SubmitHandler<FormValue> = async (values) => {
+    try {
+      await createUserWithEmailAndPassword(auth, values.email, values.password);
 
-  const handleRegister: SubmitHandler<FormValue> = (values) => {
-    console.log(values);
+      if (auth.currentUser) {
+        await updateProfile(auth.currentUser, {
+          displayName: values.username,
+        });
+      } else {
+        toast.warn('Can not update profile user');
+      }
+
+      const userRef = collection(db, 'users');
+      await addDoc(userRef, {
+        ...values,
+        status: userStatus.ACTIVE,
+        role: roleUser.USER,
+        createdAt: serverTimestamp(),
+      });
+
+      toast.success('Create user successfully!!');
+      navigate('/');
+    } catch (error) {
+      toast.error('Can not create user');
+    }
   };
+
+  useEffect(() => {
+    document.title = 'Register your account';
+  }, []);
 
   return (
     <section className='min-h-screen bg-blue-50'>
@@ -100,7 +131,13 @@ const Register: React.FC = () => {
               </div>
 
               {/* Button*/}
-              <Button type='submit'>Create accounts</Button>
+              <Button
+                disabled={isSubmitting}
+                isLoading={isSubmitting}
+                type='submit'
+              >
+                Create accounts
+              </Button>
 
               {/* already for accounts */}
               <p className='text-sm font-light text-gray-500'>

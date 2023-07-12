@@ -1,12 +1,15 @@
 import './App.css';
 import Routing from './Routes/Routing';
 import Toasty from './components/Effect/Toasty';
+import AuthProvider from './components/context/AuthContext';
 
 function App() {
   return (
     <main className='App'>
-      <Routing />
-      <Toasty />
+      <AuthProvider>
+        <Routing />
+        <Toasty />
+      </AuthProvider>
     </main>
   );
 }
