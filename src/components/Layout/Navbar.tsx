@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MenuDataProps } from '../../utils/contants';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { AuthContext } from '../context/AuthContext';
@@ -16,18 +16,18 @@ const Navbar: React.FC = () => {
   const { accounts } = useContext(AuthContext);
 
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const handleShowMenu = (): void => {
+  const handleShowMenu = () => {
     setShowMenu(!showMenu);
   };
 
   return (
     <header>
-      <nav className='bg-white border-gray-200 px-4 lg:px-6 py-2.5'>
+      <nav className='bg-white border-gray-200 px-4 lg:px-6 py-4 drop'>
         <div className='flex flex-wrap items-center justify-between max-w-screen-xl mx-auto'>
           <Logo title='Duck Blog' />
 
           <div className='flex items-center gap-3 lg:order-2'>
-            {accounts?.email ? <Avatar /> : <ActionBtn />}
+            {accounts?.email ? <Avatar user={accounts} /> : <ActionBtn />}
 
             <button
               type='button'

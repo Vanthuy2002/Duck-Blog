@@ -16,3 +16,6 @@ li .active {
   border-radius: 8px;
   color: #fff;
 }
+.drop {
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}

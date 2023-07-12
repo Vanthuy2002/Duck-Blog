@@ -30,7 +30,7 @@ const Login: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const { errors } = formState;
+  const { errors, isSubmitting } = formState;
 
   const handleLogin: SubmitHandler<FormValue> = async (values) => {
     try {
@@ -93,7 +93,13 @@ const Login: React.FC = () => {
                 )}
               </div>
               {/* Button*/}
-              <Button type='submit'>Login</Button>
+              <Button
+                isLoading={isSubmitting}
+                disabled={isSubmitting}
+                type='submit'
+              >
+                Login
+              </Button>
 
               {/* already for accounts */}
               <p className='text-sm font-light text-gray-500'>
