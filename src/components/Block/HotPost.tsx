@@ -1,6 +1,6 @@
 const HotPost: React.FC = () => {
   return (
-    <div className='max-md:mx-auto mt-10 bg-white border border-gray-200 rounded-lg'>
+    <div className='max-md:mx-auto lg:mt-10 bg-white rounded-lg shadow-md'>
       <a href='#'>
         <img
           className='rounded-t-lg object-cover h-[280px] w-full'

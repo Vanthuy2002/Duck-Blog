@@ -62,7 +62,7 @@ const Avatar: React.FC<AuthenProps> = ({ user }) => {
 
       {/* Show submenu */}
       {hide && (
-        <div className='z-10 absolute top-full -translate-x-1/2 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow'>
+        <div className='z-10 absolute top-full -translate-x-1/2 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow lg:-translate-x-3/4'>
           <div className='px-4 py-3'>
             <span className='block text-md text-gray-900'>
               {user.displayName}
