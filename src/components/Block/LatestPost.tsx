@@ -6,7 +6,7 @@ const LatestPost: React.FC = () => {
       <a href='#'>
         <img
           className='rounded-t-lg object-cover h-[180px] w-full'
-          src='https://pixlr.com/images/index/remove-bg.webp'
+          src='https://placehold.co/600x400?text=Some%20Text'
           alt=''
         />
       </a>

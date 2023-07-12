@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MenuDataProps } from '../../utils/contants';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -14,10 +14,9 @@ const menus: MenuDataProps = [
 
 const Navbar: React.FC = () => {
   const { accounts } = useContext(AuthContext);
-
-  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(false);
   const handleShowMenu = () => {
-    setShowMenu(!showMenu);
+    setShow(!show);
   };
 
   return (
@@ -34,7 +33,7 @@ const Navbar: React.FC = () => {
               className='inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200'
               onClick={handleShowMenu}
             >
-              {showMenu ? (
+              {show ? (
                 <XMarkIcon className='w-6 h-6 text-black' />
               ) : (
                 <Bars3Icon className='w-6 h-6 text-black' />
@@ -44,7 +43,7 @@ const Navbar: React.FC = () => {
 
           <div
             className={`items-center justify-between w-full lg:flex lg:w-auto lg:order-1 ${
-              showMenu ? '' : 'hidden'
+              show ? '' : 'hidden'
             }`}
           >
             <ul className='flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0'>

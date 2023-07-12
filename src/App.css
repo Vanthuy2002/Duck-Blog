@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   font-family: 'Epilogue', sans-serif;
@@ -19,4 +24,12 @@ li .active {
 }
 .drop {
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.back {
+  display: inline-block;
+  padding: 15px 30px;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
 }
