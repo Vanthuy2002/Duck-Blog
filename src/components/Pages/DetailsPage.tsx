@@ -6,7 +6,7 @@ import { Layout } from '../Layout';
 const DetailsPage: React.FC = () => {
   return (
     <Layout>
-      <section className='marker:pt-8 pb-16 lg:pt-16 lg:pb-24 px-8 bg-white pt-24'>
+      <section className='marker:pt-8 pb-16 lg:pb-24 px-8 bg-white pt-28'>
         <div className='max-w-3xl flex justify-start items-start flex-col mx-auto'>
           <article className='format format-sm sm:format-base lg:format-lg format-blue dark:format-invert'>
             <header className='mb-4 lg:mb-6 not-format'>
