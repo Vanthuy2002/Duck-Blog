@@ -1,4 +1,5 @@
 import React from 'react';
+import Author from './Author';
 
 const LatestPost: React.FC = () => {
   return (
@@ -13,10 +14,13 @@ const LatestPost: React.FC = () => {
       <div className='p-5'>
         <span className='py-2 font-bold text-gray-500'>Customer Story</span>
         <a href='#'>
-          <h5 className='my-2 text-lg font-bold tracking-tight text-gray-900'>
+          <h5 className='my-2 text-lg font-bold tracking-tight text-gray-900 over-text'>
             Noteworthy technology acquisitions 2021
           </h5>
         </a>
+        <Author className='justify-end' to='/me/emifukuda'>
+          Emifukuda
+        </Author>
       </div>
     </div>
   );

@@ -33,3 +33,12 @@ li .active {
   border-radius: 8px;
   font-weight: 500;
 }
+
+.over-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}

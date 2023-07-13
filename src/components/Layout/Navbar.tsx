@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header className='fixed w-full top-0'>
+    <header className='fixed left-0 right-0 top-0 z-20'>
       <nav className='bg-white border-gray-200 px-4 lg:px-6 py-4 shadow-md'>
         <div className='flex flex-wrap items-center justify-between max-w-screen-xl mx-auto'>
           <Logo title='Duck Blog' />
