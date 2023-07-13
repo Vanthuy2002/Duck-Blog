@@ -1,10 +1,10 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { MenuDataProps } from '../../../utils/contants';
 import { Button, toast } from '..';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../firebase/config';
-import { useClickOutSide } from '../../../Hooks/useClickOutSide';
+import { useOnClickOutside } from '../../../Hooks/useClick';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -18,11 +18,19 @@ const Avatar: React.FC = () => {
     ];
   }, [accounts?.displayName]);
 
-  const { nodeRef, hide, setHide } = useClickOutSide();
   const navigate = useNavigate();
+  const nodeRef = useRef(null);
+  const [hide, setHide] = useState<boolean>(false);
+
   const handleShow = () => {
     setHide(!hide);
   };
+
+  const handleClickOut = () => {
+    setHide(false);
+  };
+
+  useOnClickOutside(nodeRef, handleClickOut);
 
   const handleSignOut = async () => {
     try {
@@ -63,7 +71,10 @@ const Avatar: React.FC = () => {
 
       {/* Show submenu */}
       {hide && (
-        <div className='z-10 absolute top-full -translate-x-1/2 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow -translate-x-3/4'>
+        <div
+          className='z-10 absolute top-full -translate-x-1/2 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow -translate-x-3/4'
+          ref={nodeRef}
+        >
           <div className='px-4 py-3'>
             <span className='block text-md text-gray-900'>
               {accounts?.displayName}
