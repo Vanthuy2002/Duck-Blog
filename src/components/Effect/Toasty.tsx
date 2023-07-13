@@ -9,6 +9,7 @@ const Toasty: React.FC = () => {
       closeOnClick
       draggable
       theme='light'
+      pauseOnHover={false}
     />
   );
 };

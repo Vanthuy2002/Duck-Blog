@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
           <Logo title='Duck Blog' />
 
           <div className='flex items-center gap-3 lg:order-2'>
-            {accounts?.email ? <Avatar user={accounts} /> : <ActionBtn />}
+            {accounts?.email ? <Avatar /> : <ActionBtn />}
 
             <button
               type='button'

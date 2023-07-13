@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { MenuDataProps } from '../../../utils/contants';
 import { Button, toast } from '..';
-import { User, signOut } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 import { auth } from '../../../firebase/config';
 import { useClickOutSide } from '../../../Hooks/useClickOutSide';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../context/AuthContext';
 
-const subMenus: MenuDataProps = [
-  { title: 'Profile', to: '/profile' },
-  { title: 'Dashboard', to: '/dashboard' },
-];
+const Avatar: React.FC = () => {
+  const { accounts } = useContext(AuthContext);
 
-type AuthenProps = {
-  user: User;
-};
+  const subMenus: MenuDataProps = useMemo(() => {
+    return [
+      { title: 'Profile', to: `/me/${accounts?.displayName}` },
+      { title: 'Dashboard', to: '/dashboard' },
+    ];
+  }, [accounts?.displayName]);
 
-const Avatar: React.FC<AuthenProps> = ({ user }) => {
   const { nodeRef, hide, setHide } = useClickOutSide();
   const navigate = useNavigate();
   const handleShow = () => {
@@ -62,13 +63,13 @@ const Avatar: React.FC<AuthenProps> = ({ user }) => {
 
       {/* Show submenu */}
       {hide && (
-        <div className='z-10 absolute top-full -translate-x-1/2 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow lg:-translate-x-3/4'>
+        <div className='z-10 absolute top-full -translate-x-1/2 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow -translate-x-3/4'>
           <div className='px-4 py-3'>
             <span className='block text-md text-gray-900'>
-              {user.displayName}
+              {accounts?.displayName}
             </span>
             <span className='block text-md text-gray-500 truncate'>
-              {user.email}
+              {accounts?.email}
             </span>
           </div>
           <ul className='pt-2' aria-labelledby='user-menu-button'>

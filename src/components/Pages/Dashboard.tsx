@@ -1,7 +1,12 @@
 import React from 'react';
+import { LayoutDashboard } from '../module';
 
 const Dashboard: React.FC = () => {
-  return <h1>This is Dashboard Page</h1>;
+  return (
+    <React.Fragment>
+      <LayoutDashboard />
+    </React.Fragment>
+  );
 };
 
 export default Dashboard;

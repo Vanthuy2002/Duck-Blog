@@ -8,6 +8,9 @@ import MessageError from './Error/Message';
 import PasswordField from './Input/Password';
 import Logo from './Logo/Logo';
 import ActionBtn from './Action/ActionBtn';
+import Avatar from './AvatarUser/Avatar';
+import Sidebar from './Sidebar/Sidebar';
+import LayoutDashboard from './Dashboard/Layout';
 
 export {
   Button,
@@ -20,4 +23,7 @@ export {
   PasswordField,
   Logo,
   ActionBtn,
+  Avatar,
+  Sidebar,
+  LayoutDashboard,
 };
