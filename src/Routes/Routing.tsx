@@ -6,6 +6,7 @@ import Blog from '../components/Pages/Blog';
 import Dashboard from '../components/Pages/Dashboard';
 import PageNotFound from '../components/Pages/NotFounnd';
 import DetailsPage from '../components/Pages/DetailsPage';
+import Profile from '../components/Pages/Profile';
 
 const Routing = () => {
   return (
@@ -17,6 +18,7 @@ const Routing = () => {
       <Route path='login' element={<Login />}></Route>
       <Route path='*' element={<PageNotFound />}></Route>
       <Route path='/:slug' element={<DetailsPage />}></Route>
+      <Route path='/me/:name' element={<Profile />}></Route>
     </Routes>
   );
 };

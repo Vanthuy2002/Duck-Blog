@@ -15,7 +15,7 @@ const Author: React.FC<AuthorProps> = ({
 }) => {
   return (
     <Link to={to} className={`flex items-center gap-2 ${className}`}>
-      <span className='text-md hover:text-blue-400'>{children}</span>
+      <span className='text-sm hover:text-blue-400'>{children}</span>
       <img
         className='w-8 h-8 object-cover rounded-full'
         src={src}
