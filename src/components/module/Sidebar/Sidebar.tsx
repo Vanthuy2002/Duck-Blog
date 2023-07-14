@@ -5,7 +5,7 @@ import {
   UserIcon,
 } from '@heroicons/react/24/solid';
 import React, { forwardRef } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MenuDashBoard } from '../../../utils/contants';
 
 type SideProps = {
@@ -25,7 +25,7 @@ const Sidebar = forwardRef((props: SideProps, ref: refProps) => {
   return (
     <aside
       ref={ref}
-      className={`side-bar sm:translate-x-0 ${
+      className={`side-bar xl:translate-x-0 ${
         props.isShow ? '-translate-x-full' : ''
       }`}
     >
@@ -34,13 +34,13 @@ const Sidebar = forwardRef((props: SideProps, ref: refProps) => {
           {MenuSidebar.length > 0 &&
             MenuSidebar.map((menu, index) => (
               <li className='my-2' key={index}>
-                <Link
+                <NavLink
                   to={menu.to}
-                  className='flex items-center p-4 text-gray-900 rounded-lg hover:bg-gray-100 group'
+                  className='flex items-center p-4 text-gray-900 rounded-lg'
                 >
                   <menu.icon className='w-6 h-6' />
                   <span className='ml-3'>{menu.title}</span>
-                </Link>
+                </NavLink>
               </li>
             ))}
         </ul>

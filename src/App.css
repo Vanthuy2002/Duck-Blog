@@ -19,9 +19,10 @@ body {
 }
 li .active {
   background: #3b82f6;
-  border-radius: 8px;
+  border-radius: 6px;
   color: #fff;
 }
+
 .drop {
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
@@ -56,4 +57,13 @@ li .active {
   background: #fff;
   border-right: 1px;
   border-color: #d1d5db;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 12, 46, 0.15);
+}
+
+.transformCustom {
+  transform: translate(-43%, 66%);
 }

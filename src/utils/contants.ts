@@ -34,14 +34,20 @@ type HeroIcons = React.ForwardRefExoticComponent<
   } & React.RefAttributes<SVGSVGElement>
 >;
 
+// defined props use to Navbar , Menu
 type MenuProps = { title: string; to: string };
 
+// defined to use with sideBar
 type MenuWithIconProps = {
   icon: HeroIcons;
 } & MenuProps;
 
+// defined use to dropdown filter dashboard table
+type categoryProps = { id: string | number; name: string };
+
 export type MenuDataProps = Array<MenuProps>;
 export type MenuDashBoard = Array<MenuWithIconProps>;
+export type categoryListProps = Array<categoryProps>;
 
 const messErr: MessLogProps = {
   email: 'This field must be email',

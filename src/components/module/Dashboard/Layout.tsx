@@ -6,9 +6,9 @@ import { useOnClickOutside } from '../../../Hooks/useClick';
 const LayoutDashboard: React.FC = () => {
   const ref = useRef(null);
 
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(true);
   const handleShowSidebar = () => {
-    setShow(!show);
+    setShow(false);
   };
 
   const handleClickOut = () => {
@@ -25,7 +25,7 @@ const LayoutDashboard: React.FC = () => {
             <button
               ref={ref}
               onClick={handleShowSidebar}
-              className='inline-flex bg-gray-200 items-center p-2 text-sm rounded-lg sm:hidden hover:bg-gray-100 focus:ring-2 focus:ring-gray-200'
+              className='inline-flex bg-gray-200 items-center p-2 text-sm rounded-lg xl:hidden hover:bg-gray-100 focus:ring-2 focus:ring-gray-200'
             >
               <Bars3Icon className='w-6 h-6 text-black' />
             </button>

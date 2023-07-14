@@ -11,6 +11,7 @@ import ActionBtn from './Action/ActionBtn';
 import Avatar from './AvatarUser/Avatar';
 import Sidebar from './Sidebar/Sidebar';
 import LayoutDashboard from './Dashboard/Layout';
+import TableDashboard from './Table/TableDashboard';
 
 export {
   Button,
@@ -26,4 +27,5 @@ export {
   Avatar,
   Sidebar,
   LayoutDashboard,
+  TableDashboard,
 };

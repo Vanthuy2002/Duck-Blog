@@ -1,7 +1,7 @@
 import React from 'react';
 
 type LabelProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   name: string;
   className?: string;
 };
