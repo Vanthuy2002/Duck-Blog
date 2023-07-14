@@ -4,13 +4,15 @@ import {
   TagIcon,
   UserIcon,
 } from '@heroicons/react/24/solid';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import { MenuDashBoard } from '../../../utils/contants';
 
 type SideProps = {
   isShow: boolean;
 };
+
+type refProps = React.ForwardedRef<HTMLElement>;
 
 const MenuSidebar: MenuDashBoard = [
   { title: 'Dashboard', to: '', icon: ChartPieIcon },
@@ -19,11 +21,12 @@ const MenuSidebar: MenuDashBoard = [
   { title: 'User', to: '/manage/user', icon: UserIcon },
 ];
 
-const Sidebar: React.FC<SideProps> = ({ isShow }) => {
+const Sidebar = forwardRef((props: SideProps, ref: refProps) => {
   return (
     <aside
+      ref={ref}
       className={`side-bar sm:translate-x-0 ${
-        isShow ? '-translate-x-full' : ''
+        props.isShow ? '-translate-x-full' : ''
       }`}
     >
       <div className='h-full px-3 pb-4 overflow-y-auto bg-white'>
@@ -44,6 +47,6 @@ const Sidebar: React.FC<SideProps> = ({ isShow }) => {
       </div>
     </aside>
   );
-};
+});
 
 export default Sidebar;

@@ -36,7 +36,7 @@ const LayoutDashboard: React.FC = () => {
       </nav>
 
       {/* sidebar */}
-      <Sidebar isShow={show} />
+      <Sidebar isShow={show} ref={ref} />
     </React.Fragment>
   );
 };

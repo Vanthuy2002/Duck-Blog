@@ -83,7 +83,7 @@ const Avatar: React.FC = () => {
               {accounts?.email}
             </span>
           </div>
-          <ul className='pt-2' aria-labelledby='user-menu-button'>
+          <ul className='pt-2'>
             {subMenus &&
               subMenus.map((menu) => (
                 <li key={menu.title}>
@@ -95,14 +95,16 @@ const Avatar: React.FC = () => {
                   </Link>
                 </li>
               ))}
+          </ul>
+          <div className='max-w-[180px] mx-auto mt-3 my-2'>
             <Button
               onClick={handleSignOut}
-              className='bg-red-400 !py-2'
+              className='bg-red-400'
               type='button'
             >
               Logout
             </Button>
-          </ul>
+          </div>
         </div>
       )}
     </div>
