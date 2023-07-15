@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {

@@ -72,15 +72,15 @@ const Avatar: React.FC = () => {
       {/* Show submenu */}
       {hide && (
         <div
-          className='z-10 absolute top-full -translate-x-1/2 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow -translate-x-3/4'
+          className='z-10 absolute top-full my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow -translate-x-3/4'
           ref={nodeRef}
         >
           <div className='px-4 py-3'>
             <span className='block text-md text-gray-900'>
-              {accounts?.displayName}
+              {accounts?.displayName || 'Your username'}
             </span>
             <span className='block text-md text-gray-500 truncate'>
-              {accounts?.email}
+              {accounts?.email || 'example@gmail.com'}
             </span>
           </div>
           <ul className='pt-2'>
