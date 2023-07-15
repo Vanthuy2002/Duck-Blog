@@ -46,24 +46,21 @@ li .active {
 
 .side-bar {
   position: fixed;
-  width: 256px;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: 10;
   height: 100vh;
   padding-top: 80px;
   transition: transform cubic-bezier(0.4, 0, 0.2, 1) 150ms;
-  background: #fff;
   border-right: 1px;
   border-color: #d1d5db;
-}
-.overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(17, 12, 46, 0.15);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .transformCustom {
   transform: translate(-43%, 66%);
+}
+@media screen and (min-width: 1280px) {
+  .side-bar {
+    background: none;
+  }
 }

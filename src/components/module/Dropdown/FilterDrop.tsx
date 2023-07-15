@@ -1,8 +1,9 @@
 import { FunnelIcon } from '@heroicons/react/24/solid';
 import React, { useRef, useState } from 'react';
-import { Button, Label } from '..';
-import { categoryListProps } from '../../../utils/contants';
+import { Checkbox, Label } from '..';
+import { FormValue, categoryListProps } from '../../../utils/contants';
 import { useOnClickOutside } from '../../../Hooks/useClick';
+import { useForm } from 'react-hook-form';
 
 const categoryList: categoryListProps = [
   { id: 1, name: 'Story' },
@@ -13,6 +14,8 @@ const categoryList: categoryListProps = [
 ];
 
 const FilterDrop: React.FC = () => {
+  const { control } = useForm<FormValue, any>();
+
   const [showDrop, setShowDrop] = useState<boolean>(false);
   const ref = useRef(null);
 
@@ -29,7 +32,7 @@ const FilterDrop: React.FC = () => {
     <>
       <button
         ref={ref}
-        className='md:w-auto px-4 py-2.5 rounded-md flex items-center gap-2 bg-white border border-gray-200 focus:ring-4'
+        className='md:w-auto w-full px-4 py-2.5 rounded-md flex items-center gap-2 bg-white border border-gray-200 focus:ring-4'
         onClick={handleToggleShow}
       >
         <FunnelIcon className='w-5 h-5 text-gray-400' />
@@ -51,12 +54,7 @@ const FilterDrop: React.FC = () => {
                   className='flex items-center my-2 hover:bg-gray-200'
                   key={category.id}
                 >
-                  <input
-                    id={category.name}
-                    type='checkbox'
-                    value={category.name}
-                    className='w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500'
-                  />
+                  <Checkbox name={category.name} control={control} />
                   <Label
                     name={category.name}
                     className='w-full ml-2 mt-2 select-none'

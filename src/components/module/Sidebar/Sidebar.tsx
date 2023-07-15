@@ -12,7 +12,7 @@ type SideProps = {
   isShow: boolean;
 };
 
-type refProps = React.ForwardedRef<HTMLElement>;
+type refProps = React.ForwardedRef<HTMLDivElement>;
 
 const MenuSidebar: MenuDashBoard = [
   { title: 'Dashboard', to: '', icon: ChartPieIcon },
@@ -23,29 +23,33 @@ const MenuSidebar: MenuDashBoard = [
 
 const Sidebar = forwardRef((props: SideProps, ref: refProps) => {
   return (
-    <aside
-      ref={ref}
-      className={`side-bar xl:translate-x-0 ${
-        props.isShow ? '-translate-x-full' : ''
-      }`}
-    >
-      <div className='h-full px-3 pb-4 overflow-y-auto bg-white'>
-        <ul className='space-y-2 font-medium'>
-          {MenuSidebar.length > 0 &&
-            MenuSidebar.map((menu, index) => (
-              <li className='my-2' key={index}>
-                <NavLink
-                  to={menu.to}
-                  className='flex items-center p-4 text-gray-900 rounded-lg'
-                >
-                  <menu.icon className='w-6 h-6' />
-                  <span className='ml-3'>{menu.title}</span>
-                </NavLink>
-              </li>
-            ))}
-        </ul>
-      </div>
-    </aside>
+    <>
+      <aside
+        className={`side-bar flex xl:translate-x-0 ${
+          props.isShow ? '-translate-x-full' : ''
+        }`}
+      >
+        <div
+          ref={ref}
+          className='h-full w-[256px] px-3 pb-4 overflow-y-auto bg-[#eceff4]'
+        >
+          <ul className='space-y-2 font-medium'>
+            {MenuSidebar.length > 0 &&
+              MenuSidebar.map((menu, index) => (
+                <li className='my-2' key={index}>
+                  <NavLink
+                    to={menu.to}
+                    className='flex items-center p-4 text-gray-900 rounded-lg'
+                  >
+                    <menu.icon className='w-6 h-6' />
+                    <span className='ml-3'>{menu.title}</span>
+                  </NavLink>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </aside>
+    </>
   );
 });
 

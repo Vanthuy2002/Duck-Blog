@@ -7,7 +7,7 @@ const TableSearch: React.FC = () => {
         <input
           type='text'
           id='search'
-          className='w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 '
+          className='w-full p-4 pr-28 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 '
           placeholder='Search Mockups, Logos...'
         />
         <button
