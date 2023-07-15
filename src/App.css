@@ -61,6 +61,7 @@ li .active {
 }
 @media screen and (min-width: 1280px) {
   .side-bar {
+    width: 256px;
     background: none;
   }
 }

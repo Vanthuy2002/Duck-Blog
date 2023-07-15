@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Title } from '../module';
 import LatestPost from '../Block/LatestPost';
 import { Layout } from '../Layout';
 
 const DetailsPage: React.FC = () => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
     <Layout>
       <section className='marker:pt-8 pb-16 lg:pb-24 px-8 bg-white pt-28'>
