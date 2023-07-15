@@ -1,17 +1,25 @@
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useOnClickOutside } from '../../../Hooks/useClick';
 
 const ActionDrop: React.FC = () => {
   const [showActions, setShowActions] = useState<boolean>(false);
-
+  const ref = useRef(null);
   const handleActions = (): void => {
     setShowActions(!showActions);
   };
 
+  const handleClose = () => {
+    setShowActions(false);
+  };
+
+  useOnClickOutside(ref, handleClose);
+
   return (
     <>
       <button
+        ref={ref}
         className='inline-flex items-center p-0.5 rounded-lg focus:ring-4'
         type='button'
         onClick={handleActions}
@@ -20,7 +28,10 @@ const ActionDrop: React.FC = () => {
       </button>
 
       {showActions && (
-        <div className='z-20 w-44 bg-white rounded divide-y divide-gray-100 shadow absolute top-[50px]'>
+        <div
+          ref={ref}
+          className='z-20 w-44 bg-white rounded divide-y divide-gray-100 shadow absolute top-[50px]'
+        >
           <ul className='py-1 text-md text-gray-700 dark:text-gray-200'>
             <li>
               <Link

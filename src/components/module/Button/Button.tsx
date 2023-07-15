@@ -7,6 +7,7 @@ type ButtonProps = {
   className?: string;
   disabled?: boolean;
   onClick?: () => void;
+  ref?: React.LegacyRef<HTMLButtonElement> | undefined;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,9 +17,11 @@ const Button: React.FC<ButtonProps> = ({
   className = 'bg-primary-600',
   disabled = false,
   onClick,
+  ref,
 }) => {
   return (
     <button
+      ref={ref}
       type={type}
       className={`w-full text-white ${className} font-medium rounded-md text-md px-5 py-2.5 text-center disabled:opacity-50`}
       disabled={disabled}

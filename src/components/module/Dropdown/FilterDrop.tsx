@@ -1,7 +1,8 @@
 import { FunnelIcon } from '@heroicons/react/24/solid';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Label } from '..';
 import { categoryListProps } from '../../../utils/contants';
+import { useOnClickOutside } from '../../../Hooks/useClick';
 
 const categoryList: categoryListProps = [
   { id: 1, name: 'Story' },
@@ -13,24 +14,33 @@ const categoryList: categoryListProps = [
 
 const FilterDrop: React.FC = () => {
   const [showDrop, setShowDrop] = useState<boolean>(false);
+  const ref = useRef(null);
 
   const handleToggleShow = (): void => {
-    setShowDrop(!showDrop);
+    setShowDrop(true);
   };
+  const handleCloseMenu = () => {
+    setShowDrop(false);
+  };
+
+  useOnClickOutside(ref, handleCloseMenu);
 
   return (
     <>
-      <Button
+      <button
+        ref={ref}
+        className='md:w-auto px-4 py-2.5 rounded-md flex items-center gap-2 bg-white border border-gray-200 focus:ring-4'
         onClick={handleToggleShow}
-        className='md:w-auto flex items-center gap-2 bg-white border border-gray-200 focus:ring-4'
-        type='button'
       >
         <FunnelIcon className='w-5 h-5 text-gray-400' />
         <span className='text-black'>Filter</span>
-      </Button>
+      </button>
 
       {showDrop && (
-        <div className='z-10 transformCustom max-md:w-full max-md:translate-y-[66%] w-48 p-3 bg-white rounded-lg shadow absolute'>
+        <div
+          className='z-10 transformCustom max-md:w-full max-md:translate-y-[66%] w-48 p-3 bg-white rounded-lg shadow absolute'
+          ref={ref}
+        >
           <h5 className='mb-3 text-md font-bold text-gray-900'>
             Choose Category
           </h5>
@@ -49,7 +59,7 @@ const FilterDrop: React.FC = () => {
                   />
                   <Label
                     name={category.name}
-                    className='w-full ml-2 mb-0 select-none'
+                    className='w-full ml-2 mt-2 select-none'
                   >
                     {category.name}
                   </Label>
