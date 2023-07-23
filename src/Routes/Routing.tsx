@@ -1,15 +1,15 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AddPost from 'src/components/Block/Posts/AddPost';
+import Blog from 'src/components/Pages/Blog';
+import Login from 'src/components/Pages/Login';
 import PageNotFound from 'src/components/Pages/NotFounnd';
+import Register from 'src/components/Pages/Register';
 
-const Blog = lazy(() => import('src/components/Pages/Blog'));
 const Dashboard = lazy(() => import('src/components/Pages/Dashboard'));
 const DetailsPage = lazy(() => import('src/components/Pages/DetailsPage'));
 const HomePage = lazy(() => import('src/components/Pages/Home'));
-const Login = lazy(() => import('src/components/Pages/Login'));
 const Profile = lazy(() => import('src/components/Pages/Profile'));
-const Register = lazy(() => import('src/components/Pages/Register'));
 
 const Routing = () => {
   return (
