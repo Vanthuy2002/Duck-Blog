@@ -5,7 +5,7 @@ import { Layout } from '../Layout';
 
 const DetailsPage: React.FC = () => {
   useEffect(() => {
-    window.scroll(0, 0);
+    document.body.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []);
   return (
     <Layout>

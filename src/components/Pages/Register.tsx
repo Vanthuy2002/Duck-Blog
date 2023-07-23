@@ -13,10 +13,10 @@ import {
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { FormValue, messErr, roleUser, userStatus } from '../../utils/contants';
-import { auth, db } from '../../firebase/config';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { FormValue, messErr, roleUser, userStatus } from 'src/utils/contants';
+import { auth, db } from 'src/firebase/config';
 
 const Register: React.FC = () => {
   const navigate = useNavigate();

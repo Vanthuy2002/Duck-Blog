@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Bars3Icon } from '@heroicons/react/24/solid';
 import { Logo, Avatar, Sidebar } from '..';
-import { useOnClickOutside } from '../../../Hooks/useClick';
+import { useOnClickOutside } from 'src/Hooks/useClick';
 
 const LayoutDashboard: React.FC = () => {
   const ref = useRef(null);

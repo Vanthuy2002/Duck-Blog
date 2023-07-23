@@ -6,7 +6,7 @@ import {
 } from '@heroicons/react/24/solid';
 import React, { forwardRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import { MenuDashBoard } from '../../../utils/contants';
+import { MenuDashBoard } from 'src/utils/contants';
 
 type SideProps = {
   isShow: boolean;

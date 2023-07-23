@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { MenuDataProps } from '../../utils/contants';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { MenuDataProps } from 'src/utils/contants';
 import { AuthContext } from '../context/AuthContext';
-import { ActionBtn, Logo } from '../module';
-import Avatar from '../module/AvatarUser/Avatar';
+import { ActionBtn, Avatar, Logo } from '../module';
 
 const menus: MenuDataProps = [
   { title: 'Home', to: '/' },

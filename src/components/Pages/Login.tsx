@@ -12,10 +12,10 @@ import {
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { FormValue, messErr } from '../../utils/contants';
-import { AuthContext } from '../context/AuthContext';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase/config';
+import { FormValue, messErr } from 'src/utils/contants';
+import { AuthContext } from '../context/AuthContext';
+import { auth } from 'src/firebase/config';
 
 const Login: React.FC = () => {
   const { accounts } = useContext(AuthContext);

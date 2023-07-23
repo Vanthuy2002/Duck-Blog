@@ -1,12 +1,12 @@
 import React, { useContext, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { MenuDataProps } from '../../../utils/contants';
 import { Button, toast } from '..';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../../firebase/config';
-import { useOnClickOutside } from '../../../Hooks/useClick';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../context/AuthContext';
+import { signOut } from 'firebase/auth';
+import { AuthContext } from 'src/components/context/AuthContext';
+import { MenuDataProps } from 'src/utils/contants';
+import { useOnClickOutside } from 'src/Hooks/useClick';
+import { auth } from 'src/firebase/config';
 
 const Avatar: React.FC = () => {
   const { accounts } = useContext(AuthContext);
