@@ -1,12 +1,12 @@
-import React from 'react';
 import { Input, Label, LayoutDashboard } from 'src/components/module';
 import { useForm } from 'react-hook-form';
 import { FormValue, POSTTYPE, userStatus } from 'src/utils/contants';
 import Radio from 'src/components/module/Radio';
 import Select from 'src/components/module/Select';
 import TextArea from 'src/components/module/Input/TextArea';
+import UploadImage from 'src/components/module/Upload';
 
-const AddPost: React.FC = () => {
+const AddPost = () => {
   const { control, handleSubmit, setValue, watch } = useForm<
     POSTTYPE | FormValue
   >();
@@ -95,13 +95,17 @@ const AddPost: React.FC = () => {
               </div>
 
               {/* desc */}
-              <div className='sm:col-span-2'>
+              <div className='w-full'>
                 <Label name='desc'>Description</Label>
                 <TextArea
                   name='desc'
                   placeholder='Enter your desc....'
                   control={control}
                 ></TextArea>
+              </div>
+
+              <div className='w-full'>
+                <UploadImage></UploadImage>
               </div>
             </div>
             <button
