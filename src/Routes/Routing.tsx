@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import AddPost from 'src/components/Block/Posts/AddPost';
 import PageNotFound from 'src/components/Pages/NotFounnd';
 
 const Blog = lazy(() => import('src/components/Pages/Blog'));
@@ -28,6 +29,7 @@ const Routing = () => {
         <Route path='*' element={<PageNotFound />}></Route>
         <Route path='/:slug' element={<DetailsPage />}></Route>
         <Route path='/me/:name' element={<Profile />}></Route>
+        <Route path='/manage/post' element={<AddPost />}></Route>
       </Routes>
     </Suspense>
   );

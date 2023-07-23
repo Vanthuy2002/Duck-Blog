@@ -42,6 +42,17 @@ type MenuWithIconProps = {
   icon: HeroIcons;
 } & MenuProps;
 
+// defined types of POST
+export interface POSTTYPE {
+  title?: string;
+  desc?: string;
+  author?: string;
+  img?: string;
+  status?: string;
+  category?: string;
+  slug?: string;
+}
+
 // defined use to dropdown filter dashboard table
 type categoryProps = { id: string | number; name: string };
 

@@ -1,13 +1,17 @@
-import { useController, UseControllerProps } from 'react-hook-form';
-import { FormValue } from '../../../utils/contants';
-interface InputProps extends UseControllerProps<FormValue, any> {
+import {
+  FieldValues,
+  useController,
+  UseControllerProps,
+} from 'react-hook-form';
+import { FormValue, POSTTYPE } from 'src/utils/contants';
+interface InputProps<T extends FieldValues> extends UseControllerProps<T, any> {
   type: string;
   placeholder: string;
   className?: string;
   isDisabled?: boolean;
 }
 
-const Input = (props: InputProps) => {
+const Input = (props: InputProps<FormValue | POSTTYPE>) => {
   const { field } = useController(props);
 
   return (

@@ -15,7 +15,7 @@ type SideProps = {
 type refProps = React.ForwardedRef<HTMLDivElement>;
 
 const MenuSidebar: MenuDashBoard = [
-  { title: 'Dashboard', to: '', icon: ChartPieIcon },
+  { title: 'Dashboard', to: '/dashboard', icon: ChartPieIcon },
   { title: 'Post', to: '/manage/post', icon: DocumentTextIcon },
   { title: 'Category', to: '/manage/category', icon: TagIcon },
   { title: 'User', to: '/manage/user', icon: UserIcon },
